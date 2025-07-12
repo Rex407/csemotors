@@ -1,0 +1,19 @@
+{
+    "cSpell.words": [
+        "Kapoloma"
+    ],
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "rander.com",
+            "connectString": "postgresql://cse340rjk_user:B01G6oTc7mrHuvKmfrsedODw8OAPqLYE@dpg-d1o2i23uibrs73a6g740-a.frankfurt-postgres.render.com/cse340rjk"
+        }
+    ]
+}

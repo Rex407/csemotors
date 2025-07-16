@@ -1,1 +1,68 @@
-<h1>Rex Jonathan Kapoloma</h1>
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to CSE Motors!</h1>
+      <p>DMC DeLorean<br>3 Cup holders<br>Superman doors<br>Fuzzy dice</p>
+      <a href="/inventory" class="cta-button">Own Today</a>
+    </div>
+  </section>
+
+  <!-- Main Content: Two-Column Layout -->
+  <section class="main-content">
+    <div class="content-wrapper">
+      <!-- DeLorean Upgrades (Left) with Thumbnails -->
+      <div class="upgrades-section">
+        <h2>DeLorean Upgrades</h2>
+        <div class="upgrade-thumbnails">
+          <div class="upgrade-card">
+            <img src="/images/upgrades/flux-cap.png" alt="Flux Capacitor">
+            <p>Flux Capacitor</p>
+          </div>
+          <div class="upgrade-card">
+            <img src="/images/upgrades/flame.jpg" alt="Flame Decals">
+            <p>Flame Decals</p>
+          </div>
+          <div class="upgrade-card">
+            <img src="/images/upgrades/bumper_sticker.jpg" alt="Bumper Stickers">
+            <p>Bumper Stickers</p>
+          </div>
+          <div class="upgrade-card">
+            <img src="/images/upgrades/hub-cap.jpg" alt="Hub Caps">
+            <p>Hub Caps</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DMC DeLorean Reviews (Right) -->
+      <div class="reviews-section">
+        <h2>DMC DeLorean Reviews</h2>
+        <ul class="review-list">
+          <li>"So fast it's almost like traveling in time." (4/5)</li>
+          <li>"Coolest ride on the road." (4/5)</li>
+          <li>"I'm feeling McFly!" (5/5)</li>
+          <li>"The most futuristic ride of our day." (4.5/5)</li>
+          <li>"80's livin and I love it!" (5/5)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer.ejs') %>
+</main>
+
+<script>
+  // JavaScript to toggle menu and icon
+  document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('nav');
+
+    navToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+      navToggle.textContent = nav.classList.contains('active') ? '×' : '☰';
+    });
+  });
+</script>

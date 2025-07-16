@@ -1,12 +1,3 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-/* public/css/style.css */
-
 /* Reset and Base Styles */
 * {
   margin: 0;
@@ -18,79 +9,145 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-style: italic;
   line-height: 1.6;
-  color: #000; /* Black for contrast with dark gold */
-  background-color: #fff;
+  color: #000;
+  background-color: #857e42;
 }
 
 /* Color Scheme */
 :root {
   --primary: #A68A64; /* Dark Gold */
-  --secondary: #fff; /* White */
+  --secondary: #2016b4; /* White */
   --accent: #000; /* Black */
   --text: #000; /* Black */
   --light-gold: #D4A373; /* Lighter Gold for buttons */
 }
 
-/* Header */
+/* Header with Title and My Account Above Menu, No Background */
 header {
-  background: var(--primary);
-  color: var(--secondary);
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(39, 31, 17, 0.1); /* Retain shadow */
+}
+
+.header-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.5rem; /* Space between top and menu */
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   font-style: italic;
+  text-transform: uppercase;
+}
+
+.account-link a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-style: italic;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--text);
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.account-link a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  text-decoration: none;
 }
 
 .nav-toggle {
-  display: block;
+  display: none; /* Hidden on desktop by default */
   background: none;
   border: none;
-  color: var(--secondary);
-  font-size: 1.5rem;
+  color: var(--text);
+  font-size: 1.8rem;
   cursor: pointer;
+  padding: 0.5rem;
+  font-family: Arial, sans-serif;
 }
 
+/* Navigation with Inline Menu Items and Hover Effects */
 nav {
-  display: none;
-}
-
-nav.active {
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul {
   list-style: none;
-  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 nav ul li {
-  margin: 0.5rem 0;
+  margin: 0 1.5rem;
 }
 
 nav ul li a {
-  color: var(--secondary);
+  color: var(--text);
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-style: italic;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s, background-color 0.3s;
 }
 
 nav ul li a:hover {
-  text-decoration: underline;
+  color: var(--light-gold);
+  background-color: rgba(212, 163, 115, 0.2);
 }
 
-/* Hero Section */
+@media (max-width: 767px) {
+  .nav-toggle {
+    display: block; /* Show on mobile */
+  }
+
+  nav {
+    display: none; /* Hidden until toggled */
+    position: absolute;
+    top: 100%; /* Below header */
+    left: 0;
+    right: 0;
+    background: var(--secondary); /* White background for mobile menu */
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Hero Section (Centered Image) */
 .hero {
   text-align: center;
-  padding: 2rem 1rem;
-  background: url('../images/delorean.jpg') no-repeat center center/cover;
+  padding: 4rem 1rem;
+  background: url('/images/vehicles/delorean.jpg') no-repeat center center/cover;
   color: var(--secondary);
   position: relative;
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero::before {
@@ -100,98 +157,125 @@ nav ul li a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
+  padding: 2rem;
+  max-width: 800px;
 }
 
 .hero h1 {
   font-family: 'Roboto', sans-serif;
   font-style: italic;
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-button {
   background: var(--light-gold);
   color: var(--accent);
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-weight: bold;
   font-style: italic;
   display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .cta-button:hover {
-  background: darken(var(--light-gold), 10%);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: #B88A5D;
 }
 
-/* Reviews Section */
-.reviews {
+/* Main Content: Two-Column Layout with Flexbox */
+.main-content {
   padding: 2rem 1rem;
-  background: var(--secondary);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.reviews h2 {
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.upgrades-section, .reviews-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.upgrades-section h2, .reviews-section h2 {
   font-family: 'Roboto', sans-serif;
   font-style: italic;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--primary);
+  text-transform: uppercase;
 }
 
-.reviews ul {
-  list-style: none;
-}
-
-.reviews ul li {
-  margin-bottom: 0.5rem;
-  font-style: italic;
-}
-
-/* Upgrades Section */
-.upgrades {
-  padding: 2rem 1rem;
-  background: var(--secondary);
-}
-
-.upgrades h2 {
-  font-family: 'Roboto', sans-serif;
-  font-style: italic;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary);
-}
-
-.upgrade-grid {
-  display: grid;
-  gap: 1rem;
+/* Upgrades Section (Left) with Thumbnails */
+.upgrade-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .upgrade-card {
-  text-align: center;
+  flex: 0 0 calc(25% - 1.125rem); /* Thumbnail width, accounting for gap */
   padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .upgrade-card img {
   max-width: 100%;
   height: auto;
-  border: 2px solid var(--light-gold);
+  border: 3px solid var(--light-gold);
+  border-radius: 4px;
 }
 
 .upgrade-card p {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
   font-style: italic;
+}
+
+/* Reviews Section (Right) with White Background and Rounded Corners */
+.reviews-section {
+  background-color: var(--secondary);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.review-list {
+  list-style-type: disc;
+  padding-left: 2rem;
+  text-align: left;
+}
+
+.review-list li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  padding: 0.5rem;
+  background-color: var(--secondary);
+  border-radius: 4px;
 }
 
 /* Footer */
@@ -199,8 +283,8 @@ footer {
   background: var(--primary);
   color: var(--secondary);
   text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
+  padding: 1.5rem;
+  font-size: 1rem;
   font-style: italic;
 }
 
@@ -211,32 +295,61 @@ footer {
   }
 
   nav {
-    display: block;
-  }
-
-  nav ul {
     display: flex;
-    justify-content: center;
   }
 
-  nav ul li {
-    margin: 0 1rem;
+  .content-wrapper {
+    flex-direction: row;
+  }
+
+  .upgrades-section, .reviews-section {
+    flex: 1;
+  }
+
+  .upgrade-card {
+    flex: 0 0 calc(25% - 1.125rem); /* Maintain thumbnail layout */
   }
 
   .hero {
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
   }
 
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
 
   .hero p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .content-wrapper {
+    flex-direction: column;
   }
 
-  .upgrade-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .upgrades-section, .reviews-section {
+    width: 100%;
+  }
+
+  .upgrade-thumbnails {
+    flex-direction: column;
+  }
+
+  .upgrade-card {
+    flex: 0 0 100%; /* Full width on mobile */
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
   }
 }
 

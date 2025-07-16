@@ -1,8 +1,10 @@
-<header id="top-header">
-  <span class="siteName">
-    <a href="/" title="Return to home page">CSE Motors</a>
-  </span>
-  <div id="tools">
-    <a title="Click to log in" href="/account/login">My Account</a>
+<header>
+  <div class="header-top">
+    <div class="logo">CSE Motors</div>
+    <div class="account-link">
+      <a href="/my-account">My Account</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
   </div>
+  <%- include('navigation.ejs') %>
 </header>

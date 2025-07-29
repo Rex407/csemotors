@@ -5,6 +5,8 @@ const port = 3000;
 app.set('view engine', 'ejs');
 app.set('views', './views'); // Views are in csemotors/views
 app.use(express.static('public')); // Serve public folder
+const inventoryRoutes = require('./routes/inventory');
+app.use('/', inventoryRoutes);
 
 app.get('/', (_req, res) => {
   res.render('index');
